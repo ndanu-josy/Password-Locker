@@ -2,7 +2,7 @@ import unittest # Importing the unittest module
 from user_class import User # Importing the user class
 from credentials_class import Credentials # Importing the credentials class
 
-#user test classb
+#user test class
 class TestUser(unittest.TestCase):
     '''
     Test class that defines test cases for the user class 
@@ -91,27 +91,21 @@ class TestCredentials(unittest.TestCase):
         test_save_multiple_credentials to check if we can save multiple credentials
         objects to our credentials_list
         '''
-        self.new_credentials.save_credentials() 
+       
         test_credentials = Credentials("Instagram", "ndanu-josy","jos@me.com","nd@nu")
         test_credentials.save_credentials()
 
-        self.assertEqual(len(Credentials.credentials_list),2)
+        self.assertEqual(len(Credentials.credentials_list), 2)
 
     #test 7
     def test_delete_credentials(self):
-
-        
         '''
-        test_delete_contact to test if we can remove a contact from our contact list
+        test_delete_credentials to test if we can remove credentials from our credentials list
         '''
-        self.new_credentials.save_credentials()
-        test_credentials = Credentials("youtube", "ndanu", "ndanu.com", "itsme") # new contact
-        test_credentials.save_credentials()
+        self.new_credentials.delete_credentials() #Deleting credentials
+        self.assertEqual(len(Credentials.credentials_list), 1)
 
-        self.new_credentials.delete_credentials()
-        self.assertEqual(len(Credentials.credentials_list),1)
-
-    #test 8 
+    #test 8 self.new_credentials.save_credentials() 
     def test_find_contact_by_accountname(self):
         '''
         test to check if we can find user credentials for a specific account
@@ -122,18 +116,6 @@ class TestCredentials(unittest.TestCase):
 
         found_credentials = Credentials.find_by_accountname("Instagram")
         self.assertEqual(found_credentials.password, test_credentials.password)
-
-    #test 9
-    def test_display_all_contacts(self):
-        '''
-        Method that returns a list of all saved credentials
-        '''
-
-        self.assertEqual(Credentials.display_contacts(), Credentials.credentials_list)
-
-
-    
-
 
 if __name__ == '__main__':
     unittest.main()     

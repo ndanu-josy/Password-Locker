@@ -22,13 +22,27 @@ class Credentials:
         '''
         Credentials.credentials_list.append(self) 
 
-    def delete_credentials():
+    def delete_credentials(self):
         '''
-        delete_credentials method deletes  saved credentials from the credentials_list
+        Delete user credentials
         '''
         Credentials.credentials_list.remove(self)
 
+    @classmethod
+    def find_by_accountname(cls, account_name): 
+        '''
+        Method that searches account by name and returns the details
+        '''  
 
+        for credentials in cls.credentials_list:
+            if credentials.account_name == account_name:
+                return credentials
 
+    @classmethod
+    def display_contacts(cls):
+        '''
+        method that returns the contact list
+        '''
+        return cls.credentials_list
 
 
