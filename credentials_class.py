@@ -15,13 +15,20 @@ class Credentials:
         self.username = username
         self.email = email
         self.password = password
-
    
     def save_credentials(self):
         '''
         A function to save credentials
         '''
-        Credentials.credentials_list.append(self)    
+        Credentials.credentials_list.append(self) 
+
+    def delete_credentials():
+        '''
+        delete_credentials method deletes  saved credentials from the credentials_list
+        '''
+        Credentials.credentials_list.remove(self)
+
+
 
 
 
