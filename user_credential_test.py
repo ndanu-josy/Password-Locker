@@ -2,6 +2,7 @@ import unittest # Importing the unittest module
 from user_class import User # Importing the user class
 from credentials_class import Credentials # Importing the credentials class
 
+#user test class
 class TestUser(unittest.TestCase):
     '''
     Test class that defines test cases for the user class 
@@ -45,16 +46,28 @@ class TestUser(unittest.TestCase):
         self.assertTrue(user_exists)
 
       
-    #Credentials 
-    class TestCredentials(unittest.TestCase):
+    #Credentials test class
+class TestCredentials(unittest.TestCase):
+    '''
+    Test class that defines test cases for the credentials class behaviors.
+     '''
+    def setUp(self):
         '''
-        Test class that defines test cases for the credentials class behaviors.
+        Function to create credentials before each test
         '''
-        def setUp(self):
-            '''
-            Function to create credentials before each test
-            '''
-            self.new_credential = Credentials("Instagram", "ndanu-josy","jos@me.com","nd@nu")
+        self.new_credential= Credentials("Instagram", "ndanu-josy","jos@me.com","nd@nu")
+
+    #test 4
+    def test_init(self):
+        '''
+        test_init test case to test if the object is initialized properly
+        '''
+
+        self.assertEqual(self.new_credential.account_name,"Instagram")
+        self.assertEqual(self.new_credential.username, "ndanu-josy")  
+        self.assertEqual(self.new_credential.email, "jos@me.com")  
+        self.assertEqual(self.new_credential.password, "nd@nu")  
+        
 
  
 
