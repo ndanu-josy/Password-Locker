@@ -126,15 +126,29 @@ class TestCredentials(unittest.TestCase):
         self.assertEqual(found_credentials.password, test_credentials.password)
 
     #test 9
-    def test_display_all_contacts(self):
+    def test_display_all_credentials(self):
         '''
         Method that returns a list of all saved credentials
         '''
 
-        self.assertEqual(Credentials.display_contacts(), Credentials.credentials_list)
+        self.assertEqual(Credentials.display_credentials(), Credentials.credentials_list)
 
-    # #test 10
-    # def test_copy_username(self):
+    #test 10
+    def test_contact_exists(self):
+        '''
+        test to check if we can return a Boolean  if we cannot find the credential.
+        '''
+
+        self.new_credentials.save_credentials()
+        test_credentials = Credentials("Instagram", "ndanu-josy","jos@me.com","nd@nu")
+        test_credentials.save_credentials()
+
+        credential_exists = Credentials.credential_exist("Instagram")
+
+        self.assertTrue(credential_exists)
+
+    # #test 11
+    #  def test_copy_username(self):
     #     '''
     #     Test to confirm we are copying user credentials from the found credentials
     #     '''

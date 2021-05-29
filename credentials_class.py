@@ -40,11 +40,24 @@ class Credentials:
                 return credentials
 
     @classmethod
-    def display_contacts(cls):
+    def display_credentials(cls):
         '''
         method that returns the credentials list
         '''
         return cls.credentials_list
+
+
+    @classmethod
+    def credential_exist(cls,account_name):
+        '''
+        Method that checks if a credentials exists from the credential list.
+        
+        '''
+        for credential in cls.credentials_list:
+            if credential.account_name == account_name:
+                    return True
+
+        return False    
 
     # @classmethod
     # def copy_username(cls,account_name):
