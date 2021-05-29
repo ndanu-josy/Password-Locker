@@ -5,7 +5,7 @@ class Credentials:
 
     credentials_list = []
 
-    def __init__(self, account_name, username, password):
+    def __init__(self, account_name, username, email, password):
         
         '''
         __init__ method that helps us define properties for our objects.
@@ -13,6 +13,7 @@ class Credentials:
         '''
         self.account_name = account_name
         self.username = username
+        self.email = email
         self.password = password
 
 

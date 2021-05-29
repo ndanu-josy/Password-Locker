@@ -1,5 +1,6 @@
 import unittest # Importing the unittest module
 from user_class import User # Importing the user class
+from credentials_class import Credentials # Importing the credentials class
 
 class TestUser(unittest.TestCase):
     '''
@@ -44,8 +45,18 @@ class TestUser(unittest.TestCase):
         self.assertTrue(user_exists)
 
       
+    #Credentials 
+    class TestCredentials(unittest.TestCase):
+        '''
+        Test class that defines test cases for the credentials class behaviors.
+        '''
+        def setUp(self):
+            '''
+            Function to create credentials before each test
+            '''
+            self.new_credential = Credentials("Instagram", "ndanu-josy","jos@me.com","nd@nu")
 
-    
+ 
 
 if __name__ == '__main__':
     unittest.main()     
