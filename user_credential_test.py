@@ -46,7 +46,7 @@ class TestUser(unittest.TestCase):
         self.assertTrue(user_exists)
 
       
-    #Credentials test class
+#Credentials test class
 class TestCredentials(unittest.TestCase):
     '''
     Test class that defines test cases for the credentials class behaviors.
@@ -78,7 +78,25 @@ class TestCredentials(unittest.TestCase):
         self.new_credentials.save_credentials() # saving the new credentials
         self.assertEqual(len(Credentials.credentials_list),1)
 
- 
+    #teardown
+    def tearDown(self):
+        '''
+        tearDown method that does clean up after each test case has run.
+        '''
+        Credentials.credentials_list=[]
+
+    #test 6
+    def test_save_multiple_credentials(self):
+        '''
+        test_save_multiple_credentials to check if we can save multiple credentials
+        objects to our credentials_list
+        '''
+        self.new_credentials.save_credentials() 
+        test_credentials = Credentials("Instagram", "ndanu-josy","jos@me.com","nd@nu")
+        test_credentials.save_credentials()
+
+        self.assertEqual(len(Credentials.credentials_list),2)
+
 
 if __name__ == '__main__':
     unittest.main()     
