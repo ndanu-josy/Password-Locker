@@ -1,3 +1,4 @@
+# import pyperclip
 import unittest # Importing the unittest module
 from user_class import User # Importing the user class
 from credentials_class import Credentials # Importing the credentials class
@@ -57,6 +58,13 @@ class TestCredentials(unittest.TestCase):
         '''
         self.new_credentials= Credentials("Instagram", "ndanu-josy","jos@me.com","nd@nu")
 
+     #teardown
+    def tearDown(self):
+        '''
+        tearDown method that does clean up after each test case has run.
+        '''
+        Credentials.credentials_list=[]
+
     #test 4
     def test_init(self):
         '''
@@ -78,13 +86,7 @@ class TestCredentials(unittest.TestCase):
         self.new_credentials.save_credentials() # saving the new credentials
         self.assertEqual(len(Credentials.credentials_list),1)
 
-    #teardown
-    def tearDown(self):
-        '''
-        tearDown method that does clean up after each test case has run.
-        '''
-        Credentials.credentials_list=[]
-
+   
     #test 6
     def test_save_multiple_credentials(self):
         '''
@@ -131,9 +133,15 @@ class TestCredentials(unittest.TestCase):
 
         self.assertEqual(Credentials.display_contacts(), Credentials.credentials_list)
 
-
+    # #test 10
+    # def test_copy_username(self):
+    #     '''
+    #     Test to confirm we are copying user credentials from the found credentials
+    #     '''
     
-
+    #     self.new_credentials.save_credentials()
+    #     Credentials.copy_username("Instagram")
+    #     self.assertEqual(self.new_credentials.username,pyperclip.paste())
 
 if __name__ == '__main__':
     unittest.main()     

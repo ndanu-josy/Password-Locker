@@ -1,3 +1,4 @@
+# import pyperclip
 class Credentials:    
     """
     Class that generates new instances of user credentials
@@ -31,7 +32,7 @@ class Credentials:
     @classmethod
     def find_by_accountname(cls, account_name): 
         '''
-        Method that searches account by name and returns the details
+        Method that searches credentials by accname and returns the details
         '''  
 
         for credentials in cls.credentials_list:
@@ -41,8 +42,11 @@ class Credentials:
     @classmethod
     def display_contacts(cls):
         '''
-        method that returns the contact list
+        method that returns the credentials list
         '''
         return cls.credentials_list
 
-
+    # @classmethod
+    # def copy_username(cls,account_name):
+    #     credentials_found = Credentials.find_by_accountname(account_name)
+    #     pyperclip.copy(credentials_found.username)
