@@ -55,19 +55,28 @@ class TestCredentials(unittest.TestCase):
         '''
         Function to create credentials before each test
         '''
-        self.new_credential= Credentials("Instagram", "ndanu-josy","jos@me.com","nd@nu")
+        self.new_credentials= Credentials("Instagram", "ndanu-josy","jos@me.com","nd@nu")
 
     #test 4
     def test_init(self):
         '''
-        test_init test case to test if the object is initialized properly
+        test_init test case to test if the objects is initialized properly
         '''
 
-        self.assertEqual(self.new_credential.account_name,"Instagram")
-        self.assertEqual(self.new_credential.username, "ndanu-josy")  
-        self.assertEqual(self.new_credential.email, "jos@me.com")  
-        self.assertEqual(self.new_credential.password, "nd@nu")  
-        
+        self.assertEqual(self.new_credentials.account_name,"Instagram")
+        self.assertEqual(self.new_credentials.username, "ndanu-josy")  
+        self.assertEqual(self.new_credentials.email, "jos@me.com")  
+        self.assertEqual(self.new_credentials.password, "nd@nu") 
+
+    #test 5
+    def test_save_credentials(self): 
+        '''
+        test_save_credentials test case to test if the credentials object is saved into
+        the credentials list
+        '''
+
+        self.new_credentials.save_credentials() # saving the new credentials
+        self.assertEqual(len(Credentials.credentials_list),1)
 
  
 
