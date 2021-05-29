@@ -1,6 +1,6 @@
 #!/usr/bin/env python3.8
 from user_class import User  # Importing the user class
-
+from credentials_class import Credentials
 
 def create_user(username, password):
     '''
@@ -16,7 +16,6 @@ def save_user(user):
     '''
     user.save_user()
 
-
 def check_existing_user(username, password):
     '''
     Function to check if a user account exists
@@ -24,6 +23,43 @@ def check_existing_user(username, password):
     return User.user_exist(username, password)
 
 
+    #Credentials
+
+def create_credentials(account_name, username, email, password):
+    '''
+    Function to crreate new credentials
+    '''  
+    new_credentials =Credentials(account_name, username, email, password)  
+    return new_credentials
+
+def  save_credentials(credentials):
+    '''
+    Function to save credentials
+    '''
+    credentials.save_credentials()
+
+def del_credentials(credentials):
+    '''
+    Function to delete credentials
+    '''
+    credentials.delete_credentials()   
+
+def find_credentials(account_name):
+    '''
+    Function that finds credentials by account name
+    '''
+    return Credentials.find_by_accountname(account_name)
+
+def display_credentials():
+    '''
+    Function that displays all saved credentials 
+    '''
+
+
+
+
+
+# main
 def main():
     print("Hello, Welcome to PassworLocker. Create an account to save your passwords")
     print('Enter your username')
