@@ -58,6 +58,13 @@ def display_credentials():
     '''
     return Credentials.display_credentials()
 
+def check_existing_credentials(account_name):
+    '''
+    Function that check if a credential exists 
+    '''
+    return Credentials.credential_exist(account_name)
+
+
 # main
 def main():
     
@@ -143,6 +150,8 @@ def main():
                     password = input()
                     break
                 elif pswd_choice==   'y' :
+                   
+                    print("How long would you like your password?")
                     password = get_pass()
                     print ("Your generated password is " + password)
                     break
@@ -172,16 +181,21 @@ def main():
 
         elif short_code == "dl":
             print("Enter account name you would like to delete")
-            search_credentials = input()
-            if  find_credentials(account_name):
+            account_name = input()
+            if  check_existing_credentials(account_name):
                 print("Please wait ...")
-                check_account = find_account(search_account)
-                delete_account(check_account)
+                check_account = find_credentials(account_name)
+                del_credentials(check_account)
                 print(
                     f"Account {check_account.account_name}deleted successfully")
             else:
                 print('\n')
                 print("dlfailed")
+
+        else:    
+            print("Ooops wrong option entered try again")    
+    else:    
+        print("Ooops wrong option entered try again")          
 
          
 
